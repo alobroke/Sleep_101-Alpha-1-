@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sleep Quality Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff; /* Light blue background */
+        }
+        .container {
+            background: white;
+            color: black;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3fe; /* Light blue for results */
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1 class="mt-4 my-4 text-center">Sleep Quality Predictor</h1>
+<div class="container">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="gender">Gender (0 for Male, 1 for Female):</label>
+            <input type="text" class="form-control" id="gender" name="gender" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <select name="occupation" class="form-control" required>
+                <option value="0">Teacher</option>
+                <option value="1">Engineer</option>
+                <option value="2">Doctor</option>
+                <option value="3">Artist</option>
+                <option value="4">Scientist</option>
+                <option value="5">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sleep_duration">Sleep Duration (in hours):</label>
+            <input type="text" class="form-control" id="sleep_duration" name="sleep_duration" required>
+        </div>
+        <div class="form-group">
+            <label for="physical_activity_level">Physical Activity Level (0-100):</label>
+            <input type="text" class="form-control" id="physical_activity_level" name="physical_activity_level" required>
+        </div>
+        <div class="form-group">
+            <label for="stress_level">Stress Level (0-10):</label>
+            <input type="text" class="form-control" id="stress_level" name="stress_level" required>
+        </div>
+        <div class="form-group">
+            <label for="bmi_category">BMI Category:</label>
+            <select name="bmi_category" class="form-control" required>
+                <option value="0">Underweight</option>
+                <option value="1">Normal</option>
+                <option value="2">Overweight</option>
+                <option value="3">Obese</option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; padding: 14px; margin-top: 20px;">Predict</button>
+    </form>
+
+
+    {% if prediction_text %}
+    <div class="result-box">
+        <h2>{{ prediction_text }}</h2>
+        <h3>Health Status: {{ health_status }}</h3>
+    </div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
