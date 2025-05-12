@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f8ff; /* Light blue background */
+            background-color: #f0f8ff;
         }
+
         .container {
             background: white;
             color: black;
@@ -17,17 +19,39 @@
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .result-box {
             margin-top: 20px;
             padding: 15px;
-            background-color: #e7f3fe; /* Light blue for results */
+            background-color: #e7f3fe;
             border: 1px solid #b3d7ff;
             border-radius: 5px;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sleep Predictor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recommendation">Recommendation</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <h1 class="mt-4 my-4 text-center">Sleep Quality Predictor</h1>
 <div class="container">
     <form action="/predict" method="post">
@@ -42,12 +66,12 @@
         <div class="form-group">
             <label for="occupation">Occupation:</label>
             <select name="occupation" class="form-control" required>
-                <option value="0">Teacher</option>
-                <option value="1">Engineer</option>
-                <option value="2">Doctor</option>
-                <option value="3">Artist</option>
-                <option value="4">Scientist</option>
-                <option value="5">Other</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Artist">Artist</option>
+                <option value="Scientist">Scientist</option>
+                <option value="Other">Other</option>
             </select>
         </div>
         <div class="form-group">
@@ -65,17 +89,15 @@
         <div class="form-group">
             <label for="bmi_category">BMI Category:</label>
             <select name="bmi_category" class="form-control" required>
-                <option value="0">Underweight</option>
-                <option value="1">Normal</option>
-                <option value="2">Overweight</option>
-                <option value="3">Obese</option>
+                <option value="Underweight">Underweight</option>
+                <option value="Normal">Normal</option>
+                <option value="Overweight">Overweight</option>
+                <option value="Obese">Obese</option>
             </select>
         </div>
 
-
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; padding: 14px; margin-top: 20px;">Predict</button>
     </form>
-
 
     {% if prediction_text %}
     <div class="result-box">
