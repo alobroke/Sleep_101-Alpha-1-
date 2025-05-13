@@ -18,4 +18,5 @@ Flask
 gunicorn
 joblib
 numpy
-sklearn
+scikit-learn
+
